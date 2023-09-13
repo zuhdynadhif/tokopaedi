@@ -1,6 +1,3 @@
-
-# PBP
-
 ### 1. Impelemntasi checklist.
 Saya pergi ke repository lokal yang berisi tugas PBP dan menyiapkan satu folder untuk tugas-tugas yang berhubungan dengan github pada “PBP/GITHUB Connect”
 Saya membuat virtual environment denan command ```python -m venv env```
