@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block meta %}
+    <title>Add Product | Tokopaedi</title>
+{% endblock meta %}
+{% block content %}
+<div class="add_product_body">
+    <h3>Add new product</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+                <tr>
+                    <td style="text-align: left;"><b>{{ field.label_tag }}</b></td>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Add Product">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock content %}

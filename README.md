@@ -1,4 +1,12 @@
-### 1. Impelemntasi checklist.
+## Table of Content
+1. [Tugas 1](#tugas-1)
+2. [Tugas 2](#tugas-2)
+3. [Tugas 3](#tugas-3)
+4. [Tugas 4](#tugas-4)
+
+## Tugas 1
+[Contents](#table-of-content)
+### 1. Impelementasi checklist.
 Saya pergi ke repository lokal yang berisi tugas PBP dan menyiapkan satu folder untuk tugas-tugas yang berhubungan dengan github pada “PBP/GITHUB Connect”
 Saya membuat virtual environment denan command ```python -m venv env```
 Saya membuat project django app di dalam GITHUB Connect dengan menggunakan command ```django-admin startproject tokopaedi```
@@ -83,3 +91,29 @@ MVT adalah arsitektur yang membagi aplikasi menjadi 3 bagian utama yaitu Model, 
 MVVM adalah arsitektur yang membagi aplikasi menjadi 3 bagian utama yaitu Model, View, dan ViewModel. Dalam arsitektur MVVM, Model bertugas untuk mengelola logika bisnis yang ada, lalu ViewModel akan mengelola logika bisnis yang ada dan meneruskannya pada View untuk ditampilkan ke pengguna.
 
 Perbedaan ketiganya adalah pada Impelemntasi pengelolaan arsitekturnya. Pada MVC, controller hanya bertugas untuk menghubungkan Model dan juga View. Pada MVT, View bertugas menerima HTTP request dan mengembalikan HTTP response. Pada MVVM fungsionalitas elemen pada View diatur sedemikian rupa oleh ViewModel.
+
+## Tugas 2
+[Contents](#table-of-content)
+### 1. Perbedaan antara form `POST` dan `GET`
+#### a. POST
+#### b. GET
+
+### 2. Perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data
+
+### 3. Alasan JSON sering digunakan dalam pertukaran data antara aplikasi web modern
+
+### 4. Impelementasi _checklist_
+
+#### a. Membuat input `form` untuk menambahkan objek model pada app sebelumnya.
+
+#### b. Menambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+
+#### c. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+
+#### d. Menjawab beberapa pertanyaan berikut pada README.md pada root folder.
+
+
+## Tugas 3
+[Contents](#table-of-content)
+## Tugas 4
+[Contents](#table-of-content)

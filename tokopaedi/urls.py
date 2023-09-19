@@ -20,5 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # tugas 2: url agar tokopaedi bisa mengakses app main
-    path('main/', include('main.urls')),
+    path('', include('main.urls')),
 ]
