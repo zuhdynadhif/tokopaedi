@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "icon" href = "{% static 'images/logo_toko.png' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        {% block meta %}
+        {% endblock meta %}
+    </head>
+
+    <body>
+        <div class="header">
+            <ul>
+                <li>
+                    <span><b><a href="/" class="tokopaedi">tokopaedi</a></b></span>
+                </li>
+                <li>
+                    <span>
+                        Nama    : Zuhdy Nadhif Ayyasy<br>
+                        NPM     : 2206081212<br>
+                        Kelas   : PBP C
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

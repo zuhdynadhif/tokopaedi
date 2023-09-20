@@ -1,14 +1,37 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Tokopaedi - toko menjual barang-barang langka sekali</title>
-        <link rel = "icon" href = "https://th.bing.com/th/id/R.b71216d70f75db6cf218bb1949bacf76?rik=XD%2b1fFeULVAeog&riu=http%3a%2f%2fwww.redherring.com%2fwp-content%2fuploads%2f2017%2f08%2fhires-toped-tokopedia-mascot-new.png&ehk=ehuhozFf1actmsBylOE9Nq4%2f6Srv50hDM03qB56YHiQ%3d&risl=&pid=ImgRaw&r=0" type="image/x-icon">
-    </head>
-    <body>
-        <h1>Tokopedia</h1>
-        <h3>Name: {{ name }}</h3>
-        <h3>Price: {{ price }}</h3>
-        <h3>Amount: {{ amount }}</h3>
-        <h3>Description: {{ description }}</h3>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block meta %}
+    <title>Tokopaedi - Safely store your inventory</title>
+{% endblock meta %}
+{% block content %}
+    <div class="card">
+        <table class="products_view">
+            <tr>
+                <th style="text-align: center;">Name</th>
+                <th style="text-align: center;">Price</th>
+                <th style="text-align: center;">Description</th>
+                <th style="text-align: center; width: 10%;">Amount</th>
+            </tr>
+            {% for product in products %}
+            <tr class="product">
+                <td>{{product.name}}</td>
+                <td>Rp.{{product.price}}</td>
+                <td>{{product.description}}</td>
+                <td class="amount">{{product.amount}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="total_amount">Stored product(s) :</td>
+                <td class="amount">{{ total_amount }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="database">
+        <ul>
+            <li><a href="/xml/">XML Database</a></li>
+            <li><a href="/json/">JSON Database</a></li>
+            <li><a href="{% url 'main:create_product' %}" class="add_product">Add New Product</a></li>
+        </ul>
+    </div>
+{% endblock content %}
