@@ -8,12 +8,17 @@ from django.urls import reverse
 from django.core import serializers
 from main.models import Product
 from main.forms import ProductForm
-# --- tugas 3: import untuk register ---
+# --- tugas 4 ---
+# import for register
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+# import for login
+from django.contrib.auth import authenticate, login
 
-# tugas 2: function untuk show app main
+
+# ----------- tugas 2 ----------- 
+# function untuk show app main
 def show_main(request):
     products = Product.objects.all()
     context = {
@@ -22,7 +27,8 @@ def show_main(request):
     }
     return render(request, "main/main.html", context)
 
-# tugas 3: function untuk create product dan data delivery
+# ----------- tugas 3 ----------- 
+# function untuk create product dan data delivery
 def create_product(request):
     form = ProductForm(request.POST or None)
     
@@ -48,7 +54,8 @@ def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-# tugas 4: function untuk register
+# ----------- tugas 4 -----------
+# function untuk register
 def register(request):
     form = UserCreationForm()
 
@@ -60,3 +67,16 @@ def register(request):
             return redirect('main:login')
     context = {'form':form}
     return render(request, 'main/register.html', context)
+# function untuk login
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main:show_main')
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'main/login.html', context)
