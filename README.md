@@ -139,6 +139,7 @@ Salah satu alasannya adalah JSON menggunakan format text yang dapat dipahami, se
 #### e. JSON by id
 ![JSON_id](images/Assignment2/json_id.png)
 
+
 ## Tugas 4
 [Contents](#table-of-content)
 
@@ -153,7 +154,9 @@ Salah satu alasannya adalah JSON menggunakan format text yang dapat dipahami, se
 ### 5. Implementasi Checklist
 
 #### a. Mengimplementasikan fitur registrasi, login, dan logout
-
+* Registrasi
+- Membuat function register pada views.py
+- Membuat template register.html
 #### b. Membuat dua akun pengguna dengan masing-masing **3** *dummy data* menggunakan model yang telah dibuat pada aplikasi sebelumnya setiap akun **di lokal**
 
 #### c. Menghubungkan model `Item` dengan `User`
