@@ -1,10 +1,16 @@
 ## Table of Content
 1. [Tugas 1](#tugas-1)
-2. [Tugas 2](#tugas-2)
-3. [Tugas 3](#tugas-3)
-4. [Tugas 4](#tugas-4)
+1. [Tugas 2](#tugas-2)
+2. [Tugas 3](#tugas-3)
+3. [Tugas 4](#tugas-4)
+4. [Tugas 5](#tugas-5)
 
 ## Tugas 1
+[Contents](#table-of-content)
+
+Essay Scele
+
+## Tugas 2
 [Contents](#table-of-content)
 ### 1. Impelementasi checklist.
 Saya pergi ke repository lokal yang berisi tugas PBP dan menyiapkan satu folder untuk tugas-tugas yang berhubungan dengan github pada “PBP/GITHUB Connect”
@@ -92,7 +98,7 @@ MVVM adalah arsitektur yang membagi aplikasi menjadi 3 bagian utama yaitu Model,
 
 Perbedaan ketiganya adalah pada Impelemntasi pengelolaan arsitekturnya. Pada MVC, controller hanya bertugas untuk menghubungkan Model dan juga View. Pada MVT, View bertugas menerima HTTP request dan mengembalikan HTTP response. Pada MVVM fungsionalitas elemen pada View diatur sedemikian rupa oleh ViewModel.
 
-## Tugas 2
+## Tugas 3
 [Contents](#table-of-content)
 ### 1. Perbedaan antara form `POST` dan `GET`
 
@@ -133,7 +139,26 @@ Salah satu alasannya adalah JSON menggunakan format text yang dapat dipahami, se
 #### e. JSON by id
 ![JSON_id](images/Assignment2/json_id.png)
 
-## Tugas 3
-[Contents](#table-of-content)
 ## Tugas 4
+[Contents](#table-of-content)
+
+### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+### 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+### 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+### 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+### 5. Implementasi Checklist
+
+#### a. Mengimplementasikan fitur registrasi, login, dan logout
+
+#### b. Membuat dua akun pengguna dengan masing-masing **3** *dummy data* menggunakan model yang telah dibuat pada aplikasi sebelumnya setiap akun **di lokal**
+
+#### c. Menghubungkan model `Item` dengan `User`
+
+#### d. Menampilkan detail informasi pengguna yang sedang *logged in* seperti *username* dan menerapkan `cookies` seperti `last login` pada halaman utama aplikasi.
+
+## Tugas 5
 [Contents](#table-of-content)
