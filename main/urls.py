@@ -9,6 +9,7 @@ urlpatterns = [
     # --- tugas 4 ---
     path('register/', views.register, name='register'),
     path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
     # --- tugas 3 ---
     path('create-product', views.create_product, name='create_product'),
     path('xml/', views.show_xml, name='show_xml'),

@@ -13,8 +13,8 @@ from main.forms import ProductForm
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-# import for login
-from django.contrib.auth import authenticate, login
+# import for login dan logout
+from django.contrib.auth import authenticate, login, logout
 
 
 # ----------- tugas 2 ----------- 
@@ -80,3 +80,7 @@ def login_user(request):
             messages.info(request, 'Sorry, incorrect username or password. Please try again.')
     context = {}
     return render(request, 'main/login.html', context)
+# function untuk logout
+def logout_user(request):
+    logout(request)
+    return redirect('main:login')
