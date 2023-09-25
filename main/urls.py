@@ -6,6 +6,9 @@ app_name = 'main'
 
 # url untuk mengakses app main
 urlpatterns = [
+    # --- tugas 4 ---
+    path('register/', views.register, name='register'),
+    # --- tugas 3 ---
     path('create-product', views.create_product, name='create_product'),
     path('xml/', views.show_xml, name='show_xml'),
     path('json/', views.show_json, name='show_json'),
