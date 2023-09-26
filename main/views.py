@@ -15,10 +15,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 # import for login dan logout
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
 
 # ----------- tugas 2 ----------- 
 # function untuk show app main
+@login_required(login_url='main:login') # rugas 4: Restriksi halaman main
 def show_main(request):
     products = Product.objects.all()
     context = {
