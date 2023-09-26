@@ -100,3 +100,13 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+# function untuk increase or decrease amount sebanyak 1
+def update_amount(request, product_id, action):
+    product = Product.objects.get(pk = product_id)
+    if action == 'increase':
+        product.amount += 1
+    elif action == 'decrease':
+        if (product.amount > 1):
+            product.amount -= 1
+    product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))

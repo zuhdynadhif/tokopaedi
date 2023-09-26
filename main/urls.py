@@ -10,6 +10,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
+    path('update_amount/<int:product_id>/<str:action>/', views.update_amount, name='update_amount'),
     # --- tugas 3 ---
     path('create-product', views.create_product, name='create_product'),
     path('xml/', views.show_xml, name='show_xml'),

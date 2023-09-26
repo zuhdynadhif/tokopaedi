@@ -21,7 +21,12 @@
                 <td>{{product.name}}</td>
                 <td>Rp.{{product.price}}</td>
                 <td>{{product.description}}</td>
-                <td class="amount">{{product.amount}}</td>
+                <td class="amount">
+                    <a style="text-decoration: none;" href="" class="delete">Delete</a>
+                    <a style="text-decoration: none;" href="{% url 'main:update_amount' product.id 'decrease' %}" class="modify_amount">-</a>
+                    {{product.amount}}
+                    <a style="text-decoration: none;" href="{% url 'main:update_amount' product.id 'increase' %}" class="modify_amount">+</a>
+                </td>
             </tr>
             {% endfor %}
             <tr>
