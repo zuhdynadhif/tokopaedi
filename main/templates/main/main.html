@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block meta %}
-    <title>Tokopaedi - Safely store your inventory</title>
+<title>Tokopaedi - Safely store your inventory</title>
 {% endblock meta %}
 {% block content %}
+    <div class="information">
+        <h3>Welcome, {{ name }}!</h1>
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
+        <h5>Here is your inventory</h5>
+    </div>
     <div class="card">
         <table class="products_view">
             <tr>
@@ -27,7 +32,6 @@
             </tr>
         </table>
     </div>
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
     <div class="database">
         <ul>
             <li><a href="/xml/">XML Database</a></li>
