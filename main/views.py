@@ -110,3 +110,10 @@ def update_amount(request, product_id, action):
             product.amount -= 1
     product.save()
     return HttpResponseRedirect(reverse('main:show_main'))
+# function untuk delete product
+def delete_product(request, product_id):
+    if request.GET.get('confirm') == 'true':
+        product = Product.objects.get(pk = product_id)
+        product.delete()
+        messages.success(request, 'Your product has been successfully deleted!')
+    return HttpResponseRedirect(reverse('main:show_main'))

@@ -11,6 +11,7 @@ urlpatterns = [
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
     path('update_amount/<int:product_id>/<str:action>/', views.update_amount, name='update_amount'),
+    path('delete_product/<int:product_id>/', views.delete_product, name='delete_product'),
     # --- tugas 3 ---
     path('create-product', views.create_product, name='create_product'),
     path('xml/', views.show_xml, name='show_xml'),

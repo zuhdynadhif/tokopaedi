@@ -22,7 +22,7 @@
                 <td>Rp.{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td class="amount">
-                    <a style="text-decoration: none;" href="" class="delete">Delete</a>
+                    <a style="text-decoration: none;" href="{% url 'main:delete_product' product.id %}?confirm=true" onclick="return confirm('Are you sure you want to delete this product?')" class="delete">Delete</a>
                     <a style="text-decoration: none;" href="{% url 'main:update_amount' product.id 'decrease' %}" class="modify_amount">-</a>
                     {{product.amount}}
                     <a style="text-decoration: none;" href="{% url 'main:update_amount' product.id 'increase' %}" class="modify_amount">+</a>
