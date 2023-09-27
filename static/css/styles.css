@@ -24,16 +24,22 @@
 }
 .tokopaedi {
     border-radius: 10px;
-    color: #4fd15a;
+    color: #DB0808;
     font-family: mandala;
     font-size: xx-large;
     overflow: hidden;
-    padding: 7px;
+    padding: 7px 1px 7px 7px;
     text-decoration: none;
 }
-.tokopaedi:hover {
-    background-color: #ffffff;
-    outline: 1px solid #555555;
+.tokopaedi span {
+    background-color: #afafaf;
+    border-radius: 10px;
+    color: #ffffff;
+    display: block;
+    float: right;
+    font-family: mandala;
+    overflow: none;
+    padding: 0px 5px 0px 5px;
 }
 
 
@@ -107,10 +113,10 @@
     outline: 1px solid #444444;
 }
 .database a.add_product {
-    background-color: #4fd15a70;
+    background-color: #DB080870;
 }
 .database a.add_product:hover {
-    background-color: #4fd15a90;
+    background-color: #DB080890;
     outline: 1px solid #444444;
 }
 

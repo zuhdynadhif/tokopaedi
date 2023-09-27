@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block meta %}
-    <title>Tokopaedi - Safely store your inventory</title>
+<title>Tokopaedi - Safely store your inventory</title>
 {% endblock meta %}
 {% block content %}
+    <div class="information">
+        <h3>Welcome, {{ name }}!</h1>
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
+        <h5>Here is your inventory</h5>
+    </div>
     <div class="card">
         <table class="products_view">
             <tr>
@@ -16,7 +21,12 @@
                 <td>{{product.name}}</td>
                 <td>Rp.{{product.price}}</td>
                 <td>{{product.description}}</td>
-                <td class="amount">{{product.amount}}</td>
+                <td class="amount">
+                    <a style="text-decoration: none;" href="{% url 'main:delete_product' product.id %}?confirm=true" onclick="return confirm('Are you sure you want to delete this product?')" class="delete">Delete</a>
+                    <a style="text-decoration: none;" href="{% url 'main:update_amount' product.id 'decrease' %}" class="modify_amount">-</a>
+                    {{product.amount}}
+                    <a style="text-decoration: none;" href="{% url 'main:update_amount' product.id 'increase' %}" class="modify_amount">+</a>
+                </td>
             </tr>
             {% endfor %}
             <tr>
@@ -32,6 +42,7 @@
             <li><a href="/xml/">XML Database</a></li>
             <li><a href="/json/">JSON Database</a></li>
             <li><a href="{% url 'main:create_product' %}" class="add_product">Add New Product</a></li>
+            <li><a href="{% url 'main:logout' %}" class="logout">Logout</a></li>
         </ul>
     </div>
 {% endblock content %}

@@ -1,10 +1,16 @@
 ## Table of Content
 1. [Tugas 1](#tugas-1)
-2. [Tugas 2](#tugas-2)
-3. [Tugas 3](#tugas-3)
-4. [Tugas 4](#tugas-4)
+1. [Tugas 2](#tugas-2)
+2. [Tugas 3](#tugas-3)
+3. [Tugas 4](#tugas-4)
+4. [Tugas 5](#tugas-5)
 
 ## Tugas 1
+[Contents](#table-of-content)
+
+Essay Scele
+
+## Tugas 2
 [Contents](#table-of-content)
 ### 1. Impelementasi checklist.
 Saya pergi ke repository lokal yang berisi tugas PBP dan menyiapkan satu folder untuk tugas-tugas yang berhubungan dengan github pada “PBP/GITHUB Connect”
@@ -92,7 +98,7 @@ MVVM adalah arsitektur yang membagi aplikasi menjadi 3 bagian utama yaitu Model,
 
 Perbedaan ketiganya adalah pada Impelemntasi pengelolaan arsitekturnya. Pada MVC, controller hanya bertugas untuk menghubungkan Model dan juga View. Pada MVT, View bertugas menerima HTTP request dan mengembalikan HTTP response. Pada MVVM fungsionalitas elemen pada View diatur sedemikian rupa oleh ViewModel.
 
-## Tugas 2
+## Tugas 3
 [Contents](#table-of-content)
 ### 1. Perbedaan antara form `POST` dan `GET`
 
@@ -133,7 +139,62 @@ Salah satu alasannya adalah JSON menggunakan format text yang dapat dipahami, se
 #### e. JSON by id
 ![JSON_id](images/Assignment2/json_id.png)
 
-## Tugas 3
-[Contents](#table-of-content)
+
 ## Tugas 4
+[Contents](#table-of-content)
+
+### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+Django UserCreationForm() adalah salah satu tipe formulir yang disediakan oleh django. Formulir ini digunakan untuk membuat fitur pendaftaran pengguna dengan informasi dasar seperti username dan password. Django menjadikan UserCreationForm sebagai solusi dari fitur registrasi yang sering digunakan para developer. Adapun kelebihan dari UserCreationForm adalah sebagai berikut:
+* Sederhana dan mudah digunakan karena Django sudah mempersiapkan logika pemrograman yang sesuai dengan kebutuhan umum
+* Sudah terintegrasi dengan fitur keamanan yang ada pada Django, sehingga mampu memberikan keamanan yang lebih baik
+
+Meskipun begitu, UserCreationForm juga memiliki kekurangan, antara lain:
+* Kustomisasi menjadi lebih sulit karena karena membutuhkan pengaturan tertentu
+* Tampilan formulir yang terbilang cukup standar
+* Fungsionalitas yang sangat terbatas dikarenakan field yang ditawarkan hanya sebatas informasi dasar
+
+### 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+Autentikasi adalah sebuah proses untuk memverifikasi siapa yang sedang melakukan kegiatan dalam sistem. Contoh authentication adalah proses login. Sedangkan, authorization adalah proses untuk memberikan hak tertentu pada seorang user yang sudah di autentikasi. Hak ini meliputi fitur-fitur dan kegiatan tertentu yang bisa ia lakukan dalam suatu sistem .
+
+### 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Cookies adalah teknik penyimpanan data web yang berukurang relatif kecul. Cookies sering digunakan sebagai alat untuk membuat fitur session dimana seorang pengguna yang sama tidak perlu melakukan proses autentikasi berkali-kali untuk menggunakan fitur tertentu yang ada dalam website.
+
+Secara umum ,ada dua jenis cookies, yaitu temporary cookie dan *persistent cookie* (data disimpan dalam sebuah file) yang bisa digunakan dalam jangka panjang. Django memberikan kemudahan dalam penggunaan cookies dan sudah menyiapkan beberapa perintah yang sudah di enkapsulasi dalam sebuah function seperti set_cookie dan delete_cookie. Function tersebut bisa diimplementasikan dalam Views yang ada dalam proyek atau aplikasi django.
+
+### 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Cookie hanya menyimpan data dan bukan kode program sehingga tidak bisa menghapus atau merusak *data storage* pengguna. Cookies juga umumnya bersifat anonimus dan tidak menyimpan informasi personal. Namun, penggunaan cookies juga memiliki celah keamanan. Penggunaan cookies beresiko untuk mengalami pencurian sesi (*session hijacking*), sehingga pengguna yang tidak terotorisasi bisa menggunakan sesi tersebut untuk sesuatu yang merugikan.
+
+### 5. Implementasi Checklist
+#### a. Mengimplementasikan fitur registrasi, login, dan logout
+* Registrasi <br>
+Menambahkan fitur registrasi. Oertama saya menambahkan *function* register pada `views.py` yang berisi pengisian form UserCreationForm(). Selanjutnya menambahkan tempatlate untuk registrasi dengan membuat file html `register.html` berisi form yang diambil dari *context* dari `views.py`. Setelah View dan Template dari fitur registrasi selesai dibuat, selanjutnya melakukan routing pada `main/urls.py`.
+* Login<br>
+Dengan langkah serupa dengan pembuatan fitur registrasi, pembuatan fitur login dimulai dari pembuatan view, kemudian template, lalu routing url.
+* Logout<br>
+Dalam pembuatan fitur logout sama dengan pembuatan fitur registrasi dan login. Namun pada fitur logout tidak perlu membuat file html baru, cukup menambahkan tombol logout pada `main.html`.
+* Restriksi halaman main<br>
+Pada `views.py` ditambahkan `@login_required` diatas *function* show_main() yang diarahkan ke fungsi login, sehingga halaman main hanya bisa diakses setelah kita login.
+
+#### b. Membuat dua akun pengguna dengan masing-masing **3** *dummy data* menggunakan model yang telah dibuat pada aplikasi sebelumnya setiap akun **di lokal**
+Menambahkan akun dan data dengan menggunakan fitur yang ada
+* User 1: cicakbinkadal<br>
+![CicakbinKadal](/images/Assignment4/CicakbinKadal.png)
+* User 2: pacilians<br>
+![Pacilians](/images/Assignment4/Pacilians.png)
+
+
+#### c. Menghubungkan model `Item` dengan `User`
+Pertama, import User yang ada dalam auth.models pada `models.py` dan menambahkan variabel user pada Product sehingga setiap produk dimiliki oleh satu user. Selanjutnya memodifikasi fungsi create_product dengan menambahkan atribut user pada produk tersebut sesuai dengan user yang melakukan request.
+Lalu saya ubah fungsi `show_main` dengan melakukan filter pada list produk yang ditampilkan. Terakhir, melakukan migrasi model dengan perintah `python manage.py makemigrations` dan `python manage.py migrate`.
+
+#### d. Menampilkan detail informasi pengguna yang sedang *logged in* seperti *username* dan menerapkan `cookies` seperti `last login` pada halaman utama aplikasi.
+Pada fungsi `show_main` kita tambahkan input berupa cookies bernama 'last_login' yang sudah dibuat sebelumnya dan memasukkannya dalam context untuk diteruskan ke `main/main.html`. Kemudian pada template `main.html` kita membuat informasi pengguna yang sedang dalam sesi yaitu nama dan juga waktu login.
+
+### 6. Bonus
+#### a. Fitur increament dan decreament produk
+Untuk membuat fitur increament dan decreament amount produk saya membuat fungsi baru pada `views.py` yaitu dengan `update_amount`. Di dalam fungsi tersebut, saya membagi kasus menjadi 2 yaitu increase dan decrease amount. Kemudian saya menambahkan simbol '+' dan '-' disamping amount setiap product dengan menggunakan tag html a dan mengarahkannya pada url untuk memanggil fungsi `update_amount`. Kemudian saya melakukan routing pada `main/urls.py` dan menambahkan url yang menerima id product dan juga action yang dilakukan.
+#### b. Fitur remove produk
+Untuk membuat fitur delete produk, saya melakukan hal yang serupa dengan pembuatan fitur increment dan decrement. Perbedaannya adalah saya menambahkan fitur konfirmasi pada `main.html` untuk mencegah kasus 'penghapusan produk' yang tidak diinginkan.
+
+## Tugas 5
 [Contents](#table-of-content)
