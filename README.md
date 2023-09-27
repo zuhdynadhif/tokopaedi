@@ -144,24 +144,58 @@ Salah satu alasannya adalah JSON menggunakan format text yang dapat dipahami, se
 [Contents](#table-of-content)
 
 ### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+Django UserCreationForm() adalah salah satu tipe formulir yang disediakan oleh django. Formulir ini digunakan untuk membuat fitur pendaftaran pengguna dengan informasi dasar seperti username dan password. Django menjadikan UserCreationForm sebagai solusi dari fitur registrasi yang sering digunakan para developer. Adapun kelebihan dari UserCreationForm adalah sebagai berikut:
+* Sederhana dan mudah digunakan karena Django sudah mempersiapkan logika pemrograman yang sesuai dengan kebutuhan umum
+* Sudah terintegrasi dengan fitur keamanan yang ada pada Django, sehingga mampu memberikan keamanan yang lebih baik
+
+Meskipun begitu, UserCreationForm juga memiliki kekurangan, antara lain:
+* Kustomisasi menjadi lebih sulit karena karena membutuhkan pengaturan tertentu
+* Tampilan formulir yang terbilang cukup standar
+* Fungsionalitas yang sangat terbatas dikarenakan field yang ditawarkan hanya sebatas informasi dasar
 
 ### 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+Autentikasi adalah sebuah proses untuk memverifikasi siapa yang sedang melakukan kegiatan dalam sistem. Contoh authentication adalah proses login. Sedangkan, authorization adalah proses untuk memberikan hak tertentu pada seorang user yang sudah di autentikasi. Hak ini meliputi fitur-fitur dan kegiatan tertentu yang bisa ia lakukan dalam suatu sistem .
 
 ### 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Cookies adalah teknik penyimpanan data web yang berukurang relatif kecul. Cookies sering digunakan sebagai alat untuk membuat fitur session dimana seorang pengguna yang sama tidak perlu melakukan proses autentikasi berkali-kali untuk menggunakan fitur tertentu yang ada dalam website.
+
+Secara umum ,ada dua jenis cookies, yaitu temporary cookie dan *persistent cookie* (data disimpan dalam sebuah file) yang bisa digunakan dalam jangka panjang. Django memberikan kemudahan dalam penggunaan cookies dan sudah menyiapkan beberapa perintah yang sudah di enkapsulasi dalam sebuah function seperti set_cookie dan delete_cookie. Function tersebut bisa diimplementasikan dalam Views yang ada dalam proyek atau aplikasi django.
 
 ### 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Cookie hanya menyimpan data dan bukan kode program sehingga tidak bisa menghapus atau merusak *data storage* pengguna. Cookies juga umumnya bersifat anonimus dan tidak menyimpan informasi personal. Namun, penggunaan cookies juga memiliki celah keamanan. Penggunaan cookies beresiko untuk mengalami pencurian sesi (*session hijacking*), sehingga pengguna yang tidak terotorisasi bisa menggunakan sesi tersebut untuk sesuatu yang merugikan.
 
 ### 5. Implementasi Checklist
-
 #### a. Mengimplementasikan fitur registrasi, login, dan logout
 * Registrasi
-- Membuat function register pada views.py
-- Membuat template register.html
+
+Menambahkan fitur registrasi. Oertama saya menambahkan *function* register pada `views.py` yang berisi pengisian form UserCreationForm().
+Selanjutnya menambahkan tempatlate untuk registrasi dengan membuat file html `register.html` berisi form yang diambil dari *context* dari `views.py`.
+Setelah View dan Template dari fitur registrasi selesai dibuat, selanjutnya melakukan routing pada `main/urls.py`.
+* Login
+- Membuat function login_user pada views.py
+- Membuat template main/login.html
+- routing pada main/urls.py
+* Logout
+- Membuat function logout_user pada views.py
+- Membuat button logout pada main/main.html
+- routing pada main/urls.py
+* Restriksi halaman main
+- import login_required
+- add to show_main
+
 #### b. Membuat dua akun pengguna dengan masing-masing **3** *dummy data* menggunakan model yang telah dibuat pada aplikasi sebelumnya setiap akun **di lokal**
 
+
 #### c. Menghubungkan model `Item` dengan `User`
+* Linking user dan product
+- Ubah model
+- Ubah views
+- migrate
 
 #### d. Menampilkan detail informasi pengguna yang sedang *logged in* seperti *username* dan menerapkan `cookies` seperti `last login` pada halaman utama aplikasi.
+* Menampilkan detail informasi pengguna
+- ubah context
+- ubah template
 
 ## Tugas 5
 [Contents](#table-of-content)
