@@ -166,36 +166,35 @@ Cookie hanya menyimpan data dan bukan kode program sehingga tidak bisa menghapus
 
 ### 5. Implementasi Checklist
 #### a. Mengimplementasikan fitur registrasi, login, dan logout
-* Registrasi
-
-Menambahkan fitur registrasi. Oertama saya menambahkan *function* register pada `views.py` yang berisi pengisian form UserCreationForm().
-Selanjutnya menambahkan tempatlate untuk registrasi dengan membuat file html `register.html` berisi form yang diambil dari *context* dari `views.py`.
-Setelah View dan Template dari fitur registrasi selesai dibuat, selanjutnya melakukan routing pada `main/urls.py`.
-* Login
-- Membuat function login_user pada views.py
-- Membuat template main/login.html
-- routing pada main/urls.py
-* Logout
-- Membuat function logout_user pada views.py
-- Membuat button logout pada main/main.html
-- routing pada main/urls.py
-* Restriksi halaman main
-- import login_required
-- add to show_main
+* Registrasi <br>
+Menambahkan fitur registrasi. Oertama saya menambahkan *function* register pada `views.py` yang berisi pengisian form UserCreationForm(). Selanjutnya menambahkan tempatlate untuk registrasi dengan membuat file html `register.html` berisi form yang diambil dari *context* dari `views.py`. Setelah View dan Template dari fitur registrasi selesai dibuat, selanjutnya melakukan routing pada `main/urls.py`.
+* Login<br>
+Dengan langkah serupa dengan pembuatan fitur registrasi, pembuatan fitur login dimulai dari pembuatan view, kemudian template, lalu routing url.
+* Logout<br>
+Dalam pembuatan fitur logout sama dengan pembuatan fitur registrasi dan login. Namun pada fitur logout tidak perlu membuat file html baru, cukup menambahkan tombol logout pada `main.html`.
+* Restriksi halaman main<br>
+Pada `views.py` ditambahkan `@login_required` diatas *function* show_main() yang diarahkan ke fungsi login, sehingga halaman main hanya bisa diakses setelah kita login.
 
 #### b. Membuat dua akun pengguna dengan masing-masing **3** *dummy data* menggunakan model yang telah dibuat pada aplikasi sebelumnya setiap akun **di lokal**
+Menambahkan akun dan data dengan menggunakan fitur yang ada
+* User 1: cicakbinkadal<br>
+![CicakbinKadal](/images/Assignment4/CicakbinKadal.png)
+* User 2: pacilians<br>
+![Pacilians](/images/Assignment4/Pacilians.png)
 
 
 #### c. Menghubungkan model `Item` dengan `User`
-* Linking user dan product
-- Ubah model
-- Ubah views
-- migrate
+Pertama, import User yang ada dalam auth.models pada `models.py` dan menambahkan variabel user pada Product sehingga setiap produk dimiliki oleh satu user. Selanjutnya memodifikasi fungsi create_product dengan menambahkan atribut user pada produk tersebut sesuai dengan user yang melakukan request.
+Lalu saya ubah fungsi `show_main` dengan melakukan filter pada list produk yang ditampilkan. Terakhir, melakukan migrasi model dengan perintah `python manage.py makemigrations` dan `python manage.py migrate`.
 
 #### d. Menampilkan detail informasi pengguna yang sedang *logged in* seperti *username* dan menerapkan `cookies` seperti `last login` pada halaman utama aplikasi.
-* Menampilkan detail informasi pengguna
-- ubah context
-- ubah template
+Pada fungsi `show_main` kita tambahkan input berupa cookies bernama 'last_login' yang sudah dibuat sebelumnya dan memasukkannya dalam context untuk diteruskan ke `main/main.html`. Kemudian pada template `main.html` kita membuat informasi pengguna yang sedang dalam sesi yaitu nama dan juga waktu login.
+
+### 6. Bonus
+#### a. Fitur increament dan decreament produk
+Untuk membuat fitur increament dan decreament amount produk saya membuat fungsi baru pada `views.py` yaitu dengan `update_amount`. Di dalam fungsi tersebut, saya membagi kasus menjadi 2 yaitu increase dan decrease amount. Kemudian saya menambahkan simbol '+' dan '-' disamping amount setiap product dengan menggunakan tag html a dan mengarahkannya pada url untuk memanggil fungsi `update_amount`. Kemudian saya melakukan routing pada `main/urls.py` dan menambahkan url yang menerima id product dan juga action yang dilakukan.
+#### b. Fitur remove produk
+Untuk membuat fitur delete produk, saya melakukan hal yang serupa dengan pembuatan fitur increment dan decrement. Perbedaannya adalah saya menambahkan fitur konfirmasi pada `main.html` untuk mencegah kasus 'penghapusan produk' yang tidak diinginkan.
 
 ## Tugas 5
 [Contents](#table-of-content)
