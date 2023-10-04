@@ -241,9 +241,7 @@ Tailwind adalah salah satu framework CSS yang berfokus pada kelas-kelas utilitas
 Bootstrap adalah jenis framework CSS lain yang sering digunakan oleh pengembang web. Bootstrap memberikan *template* HTML yang sudah lengkap dan bisa digunakan langsung pada aplikasi. Bootstrap akan memberikan tampilan yang lebih konsisten karena menggunakan komponen-komponen yang sama yang telah didefinisikan sebelumnya. Framework ini juga tidak memerlukan pemahaman yang dalam terhadap CSS sehingga lebih *friendly* untuk pengembang web yang masih dalam tahap belajar. Selain itu, Bootstrap memiliki ukuran file yang lebih besar dibandingkan dengan Tailwind karena memiliki banyak komponen yang harus didefinisikan.
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step*
-#### a. Kustomisasi login page
-#### b. Kustomisasi register page
-#### c. Kustomisasi add product
-#### d. Kustomisasi halaman inventori
+Langkah pertama yang saya gunakan adalah membuat file css baru yang akan digunakan untuk mengubah tampilan login page. Kemudian melakukan kustomisasi terhadap setiap elemen yang ada.
 
 ### 6. Bonus
+Menggunakan fitur last-child pada CSS dan diterapkan pada tr yang ada pada table di main.html
