@@ -42,21 +42,18 @@
     padding: 0px 5px 0px 5px;
 }
 
-
-
 .card {
     padding: 0px 80px 0px;
 }
-.products_view {
+table {
     width: 100%;
     border-collapse: collapse;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     overflow: hidden;
 }
-
 /* Style the table header */
-.products_view th {
+table th {
     background-color: #9f9f9f;
     color: #000000;
     font-weight: bold;
@@ -64,27 +61,18 @@
     text-align: left;
     border-bottom: 2px solid #ccc;
 }
-.products_view td.total_amount {
-    text-align: right;
+table tr:last-child {
+    background-color: #bfbfbf;
 }
-.products_view td.amount {
-    text-align: center;
-}
-/* Style alternating rows for better readability */
-.products_view tr:nth-child(odd) {
-    background-color: #f4f4f4;
-}
-.products_view tr:last-child {
-    background-color: #cfcfcf;
-}
-/* Style table cells */
-.products_view td {
+table td {
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
-/* Add hover effect for better interaction */
-.products_view tr.product:hover {
-    background-color: #e5e5e5;
+table td.total_amount {
+    text-align: right;
+}
+table td.amount {
+    text-align: center;
 }
 
 
