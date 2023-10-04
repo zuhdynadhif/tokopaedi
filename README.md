@@ -198,3 +198,50 @@ Untuk membuat fitur delete produk, saya melakukan hal yang serupa dengan pembuat
 
 ## Tugas 5
 [Contents](#table-of-content)
+
+### 1. Jelaskan manfaat dari setiap *element selector* dan kapan waktu yang tepat untuk menggunakannnya
+Element selector adalah salah satu jenis selector pada CSS yang memungkinkan kita menargetkan elemen HTML tertentu sehingga menjadi salah satu selector yang banyak digunakan dalam styling HTML secara umum karena cakupannya yang cukup besar. Waktu yang tepat untuk menggunakan element selector adalah ketika kita ingin mengubah gaya suatu tag HTML secara keseluruhan. Contoh:
+
+```CSS
+/* Mengubah font semua paragraf */
+p {
+    font-family: Arial, sans-serif;
+}
+
+/* Membuat margin dan padding untuk elemen body, header, dan paragraf */
+body, h1, h2, h3, h4, p {
+    margin: 0;
+    padding: 0;
+}
+```
+
+Besarnya cakupan dari *element selector* menyebabkan ia tidak cocok untuk digunakan ketika kita ingin mengubah sautu tag HTML khusus. Sehingga, dalam kasus elemen khusus tertentu lebih baik menggunakan selector lain seperti *ID selector* atau *Class selector*.
+
+### 2. Jelaskan HTML5 Tag yang kamu ketahui
+Tag HTML yang baru ada HTML5 misalanya sebagai berikut:<br>
+1. `<audio>` dan  `<video>`<br>
+HTML5 memungkinkan kita untuk menambahkan audio maupun video secara langsung pada halaman web tanpa harus menggunakan aplikasi pihak ketiga.
+2. `<header` dan `<footer>`<br>
+HTML5 memiliki tag header dan footer yang memungkinkan pengembang web tidak perlu lagi menggunakan tag HTML yang lebih umum seperti `<div>`, sehingga menambah readibility pada file HTML.
+3. `<nav>`<br>
+HTML5 juga memiliki tag `<nav>` untuk mengelompokkan elemen HTML yang dibangung untuk membuat navigasi pada website. Tag `<nav>` mempermudah para pengembang web dalam membangun web dengan meningkatkan readibilitas file HTML. 
+
+
+### 3. Jelaskan perbedaan antara margin dan padding
+Margin adalah batas luar yang memisahkan sautu elemen HTML dengan elemen HTML lainnya. Margin memberikan pengaruh pada jarak antar elemen yang ada. Kita bisa mengontrol jarak antara elemen-elemen di luar suatu elemen.
+
+Di lain sisi, padding adalah batar dalam yang memberikan jarak pada suatu elemen HTML terhadap *content* yang dimilikinya.
+
+Jika kita menambahkan border pada suatu elemen HTML, margin adalah bagian kosong yang berada di luar border elemen HTML, sedangkan padding adalah bagian kosong yang ada di dalam border elemen HTML. Sehingga, dapat disimpulkan perbedaan antara margin dan padding adalah margin memberikan jarak antara suatu elemen dengan elemen lainnya, sedangkan padding memberikan jarak antara batas luar (border) sautu elemen HTML dengan `content` yang ada di dalamnya.
+
+### 4. Jelaskan perbedaan antara *framework* CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+#### a. Tailwind
+Tailwind adalah salah satu framework CSS yang berfokus pada kelas-kelas utilitas yang spesifik dan telah didefinisikan sebelumnya. Framework ini memberikan fleksibilitas kepada pengembang web karena bekerja pada bagian-bagian terkecil pada HTML yang sudah dikelompokkan pada kelas-kelas tertentu. Tailwind memerlukan pemahaman yang cukup terhadap CSS untuk bisa melakukan kustomisasi yang baik dan sesuai dengan keinginan kita. Tailwind juga memiliki file CSS yang sedikit lebih kecil dibandingkan dengan bootstrap karena hanya memuat kelas-kelas yang dinginkan saja.
+#### b. Bootstrap
+Bootstrap adalah jenis framework CSS lain yang sering digunakan oleh pengembang web. Bootstrap memberikan *template* HTML yang sudah lengkap dan bisa digunakan langsung pada aplikasi. Bootstrap akan memberikan tampilan yang lebih konsisten karena menggunakan komponen-komponen yang sama yang telah didefinisikan sebelumnya. Framework ini juga tidak memerlukan pemahaman yang dalam terhadap CSS sehingga lebih *friendly* untuk pengembang web yang masih dalam tahap belajar. Selain itu, Bootstrap memiliki ukuran file yang lebih besar dibandingkan dengan Tailwind karena memiliki banyak komponen yang harus didefinisikan.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step*
+Langkah pertama yang saya gunakan adalah membuat file css baru yang akan digunakan untuk mengubah tampilan login page. Kemudian melakukan kustomisasi terhadap setiap elemen yang ada.
+
+### 6. Bonus
+Menggunakan fitur last-child pada CSS dan diterapkan pada tr yang ada pada table di main.html

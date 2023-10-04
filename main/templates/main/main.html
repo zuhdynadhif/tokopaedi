@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block meta %}
 <title>Tokopaedi - Safely store your inventory</title>
 {% endblock meta %}
@@ -17,7 +19,7 @@
                 <th style="text-align: center; width: 10%;">Amount</th>
             </tr>
             {% for product in products %}
-            <tr class="product">
+            <tr class="product_data">
                 <td>{{product.name}}</td>
                 <td>Rp.{{product.price}}</td>
                 <td>{{product.description}}</td>
@@ -29,13 +31,13 @@
                 </td>
             </tr>
             {% endfor %}
-            <tr>
-                <td></td>
-                <td></td>
-                <td class="total_amount">Stored product(s) :</td>
-                <td class="amount">{{ total_amount }}</td>
-            </tr>
         </table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="total_amount">Stored product(s) :</td>
+            <td class="amount">{{ total_amount }}</td>
+        </tr>
     </div>
     <div class="database">
         <ul>
