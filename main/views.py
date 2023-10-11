@@ -27,6 +27,7 @@ def show_main(request):
     context = {
         'products' : products,
         'total_amount' : sum(product.amount for product in products),
+        'total_product' : products.count,
         # kirim cookies
         'last_login' : request.COOKIES['last_login'],
         # tugas 4: kirim user
