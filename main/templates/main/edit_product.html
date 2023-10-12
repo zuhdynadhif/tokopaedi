@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block meta %}
-    <title>Add Product | Tokopaedi</title>
-{% endblock meta %}
+
+{% load static %}
+
 {% block content %}
 <nav class="navbar bg-body-tertiary">
     <div class="container">
@@ -23,7 +23,7 @@
 <div class="container card">
     <!-- Tugas 5: styling add new product-->
     <br>
-    <h3 class="text-center">Add new product !</h3>
+    <h3 class="text-center">Edit Product</h3>
     <br>
     <form method="POST">
         {% csrf_token %}
@@ -35,8 +35,8 @@
                 </div>
             {% endfor %}
         </div>
-        <input type="submit" class="btn btn-primary mb-3" value="Add Product">
+        <input type="submit" class="btn btn-primary mb-3" value="Save">
         <a type="button" href="/" class="btn btn-secondary mb-3" >Cancel</a>
     </form>
 </div>
-{% endblock content %}
+{% endblock %}

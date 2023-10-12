@@ -2,14 +2,19 @@
 
 {% block meta %}
     <title>Register | Tokopaedi</title>
+    <style>
+        .register {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 {% endblock meta %}
 
 {% block content %}  
 
-<div class = "login">
-    
-    <h1>Register</h1>  
-
+<!-- <div class = "container card">
+    <h1>Register</h1>
         <form method="POST" >  
             {% csrf_token %}  
             <table>  
@@ -28,7 +33,72 @@
                 {% endfor %}  
         </ul>   
     {% endif %}
+</div> -->
+<div class = "register">
+    <section class="regsiter-block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form class="md-float-material form-material" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                <div class="row" style="margin: 10px 30px 5px;">
+                                    <div class="col-md-12">
+                                        <h4 class="text-center heading" >Create your tokopaedi account. It&rsquo;s free and only takes a minute.</h4>
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary" style="margin: 10px 10px 10px;">
+                                    <input type="text" class="form-control" name="username" value="" placeholder="Username" id="first_name"> 
+                                </div>
+                                <div class="row" style="margin: 10px 10px 0px;">
+                                    <div class="col-md-12">
+                                        <p class="text-left heading" >Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary" style="margin: 10px 10px 10px;">
+                                    <input type="password" class="form-control" name="password1" placeholder="Password1" value="" id="password">
+                                </div>
+                                <div class="row" style="margin: 10px 10px 0px;">
+                                    <div class="col-md-12">
+                                        <ul>
+                                            <li>Your password can’t be too similar to your other personal information.</li>
+                                            <li>Your password must contain at least 8 characters.</li>
+                                            <li>Your password can’t be a commonly used password.</li>
+                                            <li>Your password can’t be entirely numeric.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary" style="margin: 10px 10px 10px;">
+                                    <input type="password" class="form-control" name="password2" placeholder="Password2" value="" id="password">
+                                </div>
+                                <div class="row" style="margin: 10px 10px 0px;">
+                                    <div class="col-md-12">
+                                        <p class="text-left heading" >Enter the same password as before, for verification.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 0px 0px 10px 0px;">
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" name="submit" value="Register">
+                                        <p class="text-inverse text-center">Already have an account ? <a href="{% url 'main:login' %}" data-abc="true">Login</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</div>  
-
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+        
+</div>
 {% endblock content %}

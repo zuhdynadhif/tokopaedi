@@ -27,6 +27,7 @@ def show_main(request):
     context = {
         'products' : products,
         'total_amount' : sum(product.amount for product in products),
+        'total_product' : products.count,
         # kirim cookies
         'last_login' : request.COOKIES['last_login'],
         # tugas 4: kirim user
@@ -45,7 +46,13 @@ def create_product(request):
         product.user = request.user
         product.save()
         return HttpResponseRedirect(reverse('main:show_main'))
-    context = {'form': form}
+    context = {
+        'form': form,
+        # kirim cookies
+        'last_login' : request.COOKIES['last_login'],
+        # tugas 4: kirim user
+        'name' : request.user.username,
+    }
     return render(request, 'main/create_product.html', context)
 
 def show_xml(request):
@@ -117,3 +124,24 @@ def delete_product(request, product_id):
         product.delete()
         messages.success(request, 'Your product has been successfully deleted!')
     return HttpResponseRedirect(reverse('main:show_main'))
+# function untuk edit product
+def edit_product(request, product_id):
+    # Get product berdasarkan ID
+    product = Product.objects.get(pk = product_id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {
+        'form': form,
+        # kirim cookies
+        'last_login' : request.COOKIES['last_login'],
+        # tugas 4: kirim user
+        'name' : request.user.username,
+    }
+    return render(request, "main/edit_product.html", context)
