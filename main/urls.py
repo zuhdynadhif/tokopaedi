@@ -6,6 +6,11 @@ app_name = 'main'
 
 # url untuk mengakses app main
 urlpatterns = [
+    # --- tugas 6 ---
+    path('get-product/', views.get_product_json, name='get_product_json'),
+    path('create-product-ajax/', views.add_product_ajax, name='add_product_ajax'),
+    # --- tugas 5 ---
+    path('edit-product/<int:product_id>/', views.edit_product, name='edit_product'),
     # --- tugas 4 ---
     path('register/', views.register, name='register'),
     path('login/', views.login_user, name='login'),

@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseNotFound, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.core import serializers
 from main.models import Product
@@ -18,6 +18,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 # cookies
 import datetime
+# --- tugas 6 ---
+from django.views.decorators.csrf import csrf_exempt
 
 # ----------- tugas 2 ----------- 
 # function untuk show app main
@@ -27,6 +29,7 @@ def show_main(request):
     context = {
         'products' : products,
         'total_amount' : sum(product.amount for product in products),
+        'total_product' : products.count,
         # kirim cookies
         'last_login' : request.COOKIES['last_login'],
         # tugas 4: kirim user
@@ -45,7 +48,13 @@ def create_product(request):
         product.user = request.user
         product.save()
         return HttpResponseRedirect(reverse('main:show_main'))
-    context = {'form': form}
+    context = {
+        'form': form,
+        # kirim cookies
+        'last_login' : request.COOKIES['last_login'],
+        # tugas 4: kirim user
+        'name' : request.user.username,
+    }
     return render(request, 'main/create_product.html', context)
 
 def show_xml(request):
@@ -117,3 +126,46 @@ def delete_product(request, product_id):
         product.delete()
         messages.success(request, 'Your product has been successfully deleted!')
     return HttpResponseRedirect(reverse('main:show_main'))
+# function untuk edit product
+def edit_product(request, product_id):
+    # Get product berdasarkan ID
+    product = Product.objects.get(pk = product_id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {
+        'form': form,
+        # kirim cookies
+        'last_login' : request.COOKIES['last_login'],
+        # tugas 4: kirim user
+        'name' : request.user.username,
+    }
+    return render(request, "main/edit_product.html", context)
+
+# ----------- tugas 6 -----------
+# fungsi get product json
+def get_product_json(request):
+    product = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product))
+# fungsi add product ajax
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        amount = request.POST.get("amount")
+        user = request.user
+
+        new_product = Product(name=name, price=price, description=description, amount=amount, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
