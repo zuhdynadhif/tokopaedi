@@ -1,9 +1,10 @@
 ## Table of Content
 1. [Tugas 1](#tugas-1)
-1. [Tugas 2](#tugas-2)
-2. [Tugas 3](#tugas-3)
-3. [Tugas 4](#tugas-4)
-4. [Tugas 5](#tugas-5)
+2. [Tugas 2](#tugas-2)
+3. [Tugas 3](#tugas-3)
+4. [Tugas 4](#tugas-4)
+5. [Tugas 5](#tugas-5)
+6. [Tugas 6](#tugas-6)
 
 ## Tugas 1
 [Contents](#table-of-content)
@@ -245,3 +246,89 @@ Langkah pertama yang saya gunakan adalah membuat file css baru yang akan digunak
 
 ### 6. Bonus
 Menggunakan fitur last-child pada CSS dan diterapkan pada tr yang ada pada table di main.html
+
+## Tugas 6
+[Contents](#table-of-content)
+
+### 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Perbedaan utama dari asynchronous programming dan synchronous programming berada pada proses eksekusi tugas. Pada asynchronous programming, eksekusi suatu tugas dapat dilakukan meskipun terdapat tugas lain yang harus dieksekusi. Sebaliknya, synchronous programming akan menunggu tugas lain diselesaikan terlebih dahulu.
+
+Pada asynchronous programming, program dimungkinkan untuk berjalan lebih efektif karena eksekusi tugas dilakukan di balik layar sehingga memberikan kenyamanan pada pengguna karena page website tidak perlu melakukan *refresh web*. Sebaliknya, hal ini tidak bisa dilakukan pada synchronous programming karena pengguna harus mengunggu satu tugas diselesaikan.
+
+Kesimpulannya, asynchronous programming memungkinkan program berjalan secara paralel, sedangkan synchronous programming tidak.
+
+### 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma ini merupakan pendekatan pada pengembangan perangkat lunak yang memungkinkan suatu program berperilaku lebih interaktif karena dapat merespon suatu kejadian atau peristiwa seperti input dari pengguna, input keyboard, hingga kejadian pada *mouse* pengguna.
+
+Paradigma event-driven programming melibatkan beberapa komponen seperti *event* itu sendiri, *event-handler* yang merupakan kode atau fungsi yang akan merespon event yang terjadi, dan *callback function* yaitu fungsi yang akan dipanggil pada suatu kasus tertentu yang memungkinkan program berjalan lebih dinamis.
+
+Pada tugas kali ini, terdapat implementasi paradigma event-driven programming, yaitu pada button `Add Item Ajax`. Pada fitur tersebut saya mengimplementasikan event onclick yang direpresentasikan oleh kode berikut:
+```JavaScipt
+document.getElementById("button_add").onclick = addProduct
+```
+kode tersebut akan memanggil fungsi addProduct jika pengguna menekan elemen HTML dengan id button_add.
+
+### 3. Jelaskan penerapan asynchronous programming pada AJAX.
+Ada 2 cara yang umum dilakukan untuk menerapkan asynchronous programming pada AJAX, yaitu:
+
+1. Menggunakan XMLHttpRequest<br>
+Penerapan AJAX menggunakan XMLHttpRequest adalah cara yang sudah lama digunakan, metode ini menggunakan sebuah object XMLHttpRequest dalam pengiriman datanya.
+
+2. Menggunakan Fetch API<br>
+Penerapan AJAX dengan menggunakan fetch API adalah cara yang lebih modern dalam menerapkan asynchronous programming pada website. Fitur ini memiliki berbagai keunggulan yang tidak dimiliki metode XMLHttpRequest karena memang menjadi pengganti dan disosialisasikan pada ECMAScript 2020.
+
+### 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Berikut ini merupakan perbandingan antara AJAX yang diimplementasikan dengan Fetch API dan AJAX yang diimplementasikan dengan library jQuery
+
+| Fetch API | Library JQuery |
+| - | - |
+| Sytax yang lebih mudah dipahami | Syntax lebih rumit |
+| Menggunakan Promises | Menggunakan callback |
+| Lebih modern dan memiliki performa yang lebih baik | Sudah lama digunakan sehingga memiliki kompatibilitas yang lebih luas |
+| Membutuhkan langkah tambahan untuk mengimplementasikan fitur tambahan selain AJAX | Memiliki fitur tambahan selain AJAX |
+
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+
+#### a. AJAX GET
+1. Ubah kode pada *cards*
+
+    Pada template `main.html` saya mengganti bagian kode yang menampilkan data product menjadi sebuah tag HTML tanpa inner HTML dengan id *product_body_card* yang akan diisi dengan potongan HTML yang diisi dengan menggunakan AJAX.
+
+2. Get item dengan AJAX
+
+    Pada `views.py` saya menambahkan fungsi baru berupa `get_product_json` yang akan mengembalikan semua product yang dimiliki oleh seorang user. Kemudian, melakukan routing pada `urls.py`. Terakhir, saya memodifikasi `main.html` dengan menambahkan tag script yang berisi fungsi `getProduct` dan `refreshProduct`. Fungsi tersebut digunakan untuk mendapatkan product untuk suatu user dan menampilkan data terbaru.
+
+#### b. AJAX POST
+
+1. Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item<br><br>
+
+    Saya membuat sebuah model bootsrap dari suatu modal pada `main.html` yang akan dipanggil ketika button berikut *triggerred*
+    ```HTML
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New Product by AJAX</button>
+    ```
+
+2. Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
+
+    Pada `views.py` saya membuat function add_product_ajax yang ditujukan untuk membuat sebuah produk baru menggunakan method POST dan menerapkan `@srf_exempt` untuk keamanannya.
+
+3. Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+
+    Saya melakukan routing pada `urls.py` dengan menambahkan potongan kode berikut:
+    ```python
+    path('create-product-ajax/', views.add_product_ajax, name='add_product_ajax'),
+    ```
+
+
+4. Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+
+    Untuk menghubungkan modal dengan form, saya memanfaatkan tombol `Add Product` dengan id `button_add` yang akan memanggil fungsi `addProduct` pada script.
+
+5. Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.
+    Saya melakukan refresh halaman utama dengan memanfaatkan fitur `fetch` dan `then` yang memanggil fungsi `refreshProduct` yang akan memperbarui data produk pada halaman utama. Selanjutnya, saya membersihkan form yang terisi dengan menggunakan method reset() pada form.
+
+
+#### c. Melakukan perintah collectstatic.
+
+Melakukan perintah `python manage.py collectstatic` pada cmd project directory. Kemudian membentuk direktori `static/admin`
