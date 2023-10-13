@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseNotFound, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.core import serializers
 from main.models import Product
@@ -18,6 +18,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 # cookies
 import datetime
+# --- tugas 6 ---
+from django.views.decorators.csrf import csrf_exempt
 
 # ----------- tugas 2 ----------- 
 # function untuk show app main
@@ -145,3 +147,25 @@ def edit_product(request, product_id):
         'name' : request.user.username,
     }
     return render(request, "main/edit_product.html", context)
+
+# ----------- tugas 6 -----------
+# fungsi get product json
+def get_product_json(request):
+    product = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product))
+# fungsi add product ajax
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        amount = request.POST.get("amount")
+        user = request.user
+
+        new_product = Product(name=name, price=price, description=description, amount=amount, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
