@@ -6,6 +6,8 @@ app_name = 'main'
 
 # url untuk mengakses app main
 urlpatterns = [
+    # --- tugas 9 ---
+    path('create-flutter/', views.create_product_flutter, name='create_product_flutter'),
     # --- tugas 6 ---
     path('get-product/', views.get_product_json, name='get_product_json'),
     path('create-product-ajax/', views.add_product_ajax, name='add_product_ajax'),

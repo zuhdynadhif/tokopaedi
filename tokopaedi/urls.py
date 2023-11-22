@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # tugas 9: url auth
+    path('auth/', include('authentication.urls')),
     path('admin/', admin.site.urls),
     # tugas 2: url agar tokopaedi bisa mengakses app main
     path('', include('main.urls')),
